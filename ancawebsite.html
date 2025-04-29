@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<h tml lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ANCA</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <!-- Apple Touch Icon (for iOS home screen bookmarks) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Android / Chrome icon -->
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+
+    <!-- Web App Manifest (optional if you want to turn your site into an installable app) -->
+    <link rel="manifest" href="site.webmanifest">
+  <style>
+    /* Header style */
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 2px solid #333;
+      background-color: #f4f4f4;
+      position: relative;
+    }
+    
+    header img {
+      height: 150px;
+      width: 150px;  /* Fixed width */
+      margin-right: 20px;
+      cursor: pointer;
+      object-fit: contain; /* Prevents distortion */
+    }
+
+    header h1 {
+      font-size: 44px;
+      margin: 0;
+      color: #333;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Compact Carousel styles */
+    .carousel-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+  
+    .carousel-slide {
+      min-width: 100%; 
+      height: 250px; /* Reduced height */     
+    }
+  
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .dots {
+      text-align: center;
+      margin: 10px 0;
+    }
+  
+    .dot {
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+  
+    .dot.active {
+      background-color: #333;
+    }
+
+    /* Navigation menu */
+    nav {
+      background-color: #333;
+      padding: 10px 0;
+      margin-top: 10px;
+    }
+
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-menu li {
+      margin: 0 15px;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-menu a:hover {
+      color: #ddd;
+    }
+
+    /* Underline effect on hover */
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    /* Info Section */
+    .info-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .info-section h2 {
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .info-section h3 {
+      color: #555;
+      margin-top: 20px;
+    }
+
+    .info-section p, .info-section li {
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .info-section ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    
+    .contact-info {
+      margin: 20px 0;
+    }
+    
+    .contact-info p {
+      margin: 10px 0;
+    }
+    
+    .contact-info strong {
+      display: inline-block;
+      width: 100px;
+    }
+    
+    .gallery-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* News item styles */
+    .news-item {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      color: #666;
+      font-size: 14px;
+      font-style: italic;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section with Logo and Title -->
+<header>
+  <img src="http://www.anca.org.uk/files/anca-logo-bw_0001.jpg" alt="Logo" id="header-logo">
+  <h1>Adiscombe Neighbourhood Care Association</h1>
+</header>
+
+<!-- Compact Carousel Section -->
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide"><img src="http://www.anca.org.uk/files/entrance-dscn1988.jpg" alt="1"></div>
+      <div class="carousel-slide"><img src="http://www.anca.org.uk/files/dscn1993.jpg" alt="2"></div>
+      <div class="carousel-slide"><img src="http://www.anca.org.uk/styled-2/files/shopping2dscf0106-3.jpg" alt="3"></div>
+      <div class="carousel-slide"><img src="http://www.anca.org.uk/styled/files/extenddscf0092.jpg" alt="4"></div>
+      <div class="carousel-slide"><img src="http://www.anca.org.uk/files/dscn1987.jpg" alt="5"></div>
+    </div>
+  </div>
+
+  <!-- Dots Section -->
+  <div class="dots">
+    <span class="dot active" data-index="0"></span>
+    <span class="dot" data-index="1"></span>
+    <span class="dot" data-index="2"></span>
+    <span class="dot" data-index="3"></span>
+    <span class="dot" data-index="4"></span>
+  </div>
+</div>
+
+<!-- Navigation Menu -->
+<nav>
+  <ul class="nav-menu">
+    <li><a href="#" id="home-tab">Home</a></li>
+    <li><a href="#" id="news-tab">News</a></li>
+    <li><a href="#" id="events-tab">Events and Activities</a></li>
+    <li><a href="#" id="volunteer-tab">Volunteering</a></li>
+    <li><a href="#" id="gallery-tab">Gallery</a></li>
+    <li><a href="#" id="contact-tab">Contact Us</a></li>
+    <li><a href="#">About ANCA</a></li>
+  </ul>
+</nav>
+
+<!-- ANCA Information Section -->
+<div class="info-section" id="anca-info">
+  <h2>About ANCA</h2>
+  
+  <h3>Background</h3>
+  <p>The Addiscombe Neighbourhood Care Association (ANCA) is a Registered Charity providing practical help, advice, support and community activities to the people of Addiscombe and its immediate environs.</p>
+  
+  <p>ANCA was launched in the 1960s by the Addiscombe Group of Churches as an expression of their care in the community.</p>
+  
+  <p>At that time, the main objective was to provide a visiting and befriending service to the elderly, housebound people in the area. Since that time, ANCA has undergone considerable expansion to become the active and greatly valued organisation it is today.</p>
+</div>
+
+<!-- News Section -->
+<div class="info-section" id="news-info">
+  <h2>Latest News</h2>
+  
+  <h3>Recent Updates</h3>
+  <p>Stay informed about what's happening at ANCA with our latest news and announcements.</p>
+  
+  <div class="news-item">
+    <h4>Summer Garden Party Success</h4>
+    <p>Our annual Summer Garden Party was a great success, with over 100 attendees enjoying the sunshine, live music, and delicious food.</p>
+    <p class="news-date">Posted: June 15, 2023</p>
+  </div>
+  
+  <div class="news-item">
+    <h4>New Volunteer Training Program</h4>
+    <p>We've launched a new training program for volunteers starting in September. Contact us to learn more and sign up.</p>
+    <p class="news-date">Posted: May 28, 2023</p>
+  </div>
+  
+  <div class="news-item">
+    <h4>Winter Coat Drive</h4>
+    <p>We're collecting warm coats for those in need this winter. Drop off donations at our office during opening hours.</p>
+    <p class="news-date">Posted: November 2, 2023</p>
+  </div>
+</div>
+
+<!-- Events and Activities Section -->
+<div class="info-section" id="events-info">
+  <h2>Events and Activities</h2>
+  
+  <h3>Weekly Activities</h3>
+  <p>ANCA offers a variety of weekly activities for our community members:</p>
+  <ul>
+    <li>Monday: Coffee Morning (10am-12pm)</li>
+    <li>Wednesday: Arts and Crafts (2pm-4pm)</li>
+    <li>Friday: Gentle Exercise Class (11am-12pm)</li>
+  </ul>
+  
+  <h3>Special Events</h3>
+  <p>We regularly host special events throughout the year:</p>
+  <ul>
+    <li>Summer Garden Party (July)</li>
+    <li>Christmas Bazaar (December)</li>
+    <li>Seasonal Outings and Trips</li>
+  </ul>
+  
+  <h3>How to Participate</h3>
+  <p>All our events and activities are open to the community. For more information or to register for an event, please contact our office or visit us during opening hours.</p>
+</div>
+
+<!-- Volunteering Section -->
+<div class="info-section" id="volunteer-info">
+  <h2>Volunteering with ANCA</h2>
+  
+  <p>ANCA currently has about 40 volunteers. We always need new people as the demands on our services increase all the time. In particular, we need people to:</p>
+  
+  <ul>
+    <li>Drive clients to health appointments and collect them afterwards. The vast majority of appointments are in the Croydon area and are during weekday working hours. Volunteers will need access to a suitable roadworthy vehicle and must check their insurance</li>
+    <li>Escort clients on the shopping buses on a rota basis</li>
+    <li>Help at social events and the Lunch Club, to set out tables and chairs, wait on tables, clearing and washing up afterwards</li>
+    <li>Befriend clients by regular visits to them in their homes</li>
+    <li>Offer practical "DIY" type help on an occasional basis, in response to ad-hoc requests. This may be no more complex than changing an out of reach light bulb – but still essential support for a frail housebound person</li>
+    <li>Take on office duties on a rota basis, including answering the telephone to clients and acting on their requests</li>
+    <li>Carry out light gardening</li>
+    <li>Assist clients with official "form-filling" and liaison with statutory authorities</li>
+  </ul>
+  
+  <h3>Safeguarding</h3>
+  <p>Many of our clients may be vulnerable and ANCA has a safeguarding Policy. We ask all volunteers and staff to undertake a DBS assessment, at no cost to the volunteers or staff.</p>
+    
+  <h3>Sign Up to Volunteer</h3>
+  <p>Please fill out the form below if you're interested in volunteering with us:</p>
+  <iframe src="https://forms.office.com/r/Y7nFMzz8aS" width="100%" height="700px" frameborder="0" marginheight="0" marginwidth="0" style="border: none;">Loading…</iframe>
+</div>
+
+<!-- Contact Us Section -->
+<div class="info-section" id="contact-info">
+  <h2>Contact ANCA</h2>
+  
+  <div class="contact-info">
+    <p><strong>Telephone:</strong> 020 8654 5062</p>
+    <p><strong>Email:</strong> info@anca.org.uk</p>
+    
+    <h3>Post</h3>
+    <p>ANCA Office<br>
+    St Mildred's Centre<br>
+    30 Bingham Road<br>
+    Croydon<br>
+    CR0 7EB</p>
+    
+    <h3>Visit</h3>
+    <p>Call round to the ANCA Office on a weekday morning. We are close to the Addiscombe Tram Stop and bus services along Lower Addiscombe Road. There is a car park adjacent to the Centre (though this fills up quickly) or metered parking in the surrounding streets. Come in to the main Centre entrance and the office is immediately on the right. Ask at the Parish Office reception desk.</p>
+      <h3>Our Location</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19833.74944717303!2d-0.08891530694226377!3d51.37423398117447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876042b3700f4d1%3A0xd901f92655b5a79e!2sAddiscombe%2C%20Croydon!5e0!3m2!1sen!2suk!4v1712581580000!5m2!1sen!2suk" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+  </div>
+</div>
+
+<!-- Gallery Section -->
+<div class="info-section" id="gallery-info">
+  <h2>Gallery</h2>
+  <img src="https://en.support.wordpress.com/wp-content/uploads/2020/10/coming-soon-new.png" alt="Coming Soon" class="gallery-image">
+  <p style="text-align: center; margin-top: 20px;">Our gallery is coming soon! Check back later for photos of our events and activities.</p>
+</div>
+
+
+<script>
+  let currentIndex = 0;
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.dot');
+  const homeTab = document.getElementById('home-tab');
+  const newsTab = document.getElementById('news-tab');
+  const eventsTab = document.getElementById('events-tab');
+  const volunteerTab = document.getElementById('volunteer-tab');
+  const galleryTab = document.getElementById('gallery-tab');
+  const contactTab = document.getElementById('contact-tab');
+  const headerLogo = document.getElementById('header-logo');
+  const ancaInfo = document.getElementById('anca-info');
+  const newsInfo = document.getElementById('news-info');
+  const eventsInfo = document.getElementById('events-info');
+  const volunteerInfo = document.getElementById('volunteer-info');
+  const contactInfo = document.getElementById('contact-info');
+  const galleryInfo = document.getElementById('gallery-info');
+
+  function updateCarousel() {
+    const slideWidth = slides[0].clientWidth;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      goToSlide(index);
+    });
+  });
+
+  // Auto-scroll every 4 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }, 4000);
+
+  // Show ANCA info when Home tab is clicked
+  homeTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    showHomePage();
+  });
+
+  // Show News info when News tab is clicked
+  newsTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    newsInfo.style.display = 'block';
+    ancaInfo.style.display = 'none';
+    eventsInfo.style.display = 'none';
+    volunteerInfo.style.display = 'none';
+    contactInfo.style.display = 'none';
+    galleryInfo.style.display = 'none';
+  });
+
+  // Show Events info when Events tab is clicked
+  eventsTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    eventsInfo.style.display = 'block';
+    ancaInfo.style.display = 'none';
+    newsInfo.style.display = 'none';
+    volunteerInfo.style.display = 'none';
+    contactInfo.style.display = 'none';
+    galleryInfo.style.display = 'none';
+  });
+
+  // Show Volunteer info when Volunteer tab is clicked
+  volunteerTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    volunteerInfo.style.display = 'block';
+    ancaInfo.style.display = 'none';
+    newsInfo.style.display = 'none';
+    eventsInfo.style.display = 'none';
+    contactInfo.style.display = 'none';
+    galleryInfo.style.display = 'none';
+  });
+
+  // Show Gallery info when Gallery tab is clicked
+  galleryTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    galleryInfo.style.display = 'block';
+    ancaInfo.style.display = 'none';
+    newsInfo.style.display = 'none';
+    eventsInfo.style.display = 'none';
+    volunteerInfo.style.display = 'none';
+    contactInfo.style.display = 'none';
+  });
+
+  // Show Contact info when Contact tab is clicked
+  contactTab.addEventListener('click', (e) => {
+    e.preventDefault();
+    contactInfo.style.display = 'block';
+    ancaInfo.style.display = 'none';
+    newsInfo.style.display = 'none';
+    eventsInfo.style.display = 'none';
+    volunteerInfo.style.display = 'none';
+    galleryInfo.style.display = 'none';
+  });
+
+  // Function to show home page
+  function showHomePage() {
+    ancaInfo.style.display = 'block';
+    newsInfo.style.display = 'none';
+    eventsInfo.style.display = 'none';
+    volunteerInfo.style.display = 'none';
+    contactInfo.style.display = 'none';
+    galleryInfo.style.display = 'none';
+  }
+
+  // Show home page when header logo is clicked
+  headerLogo.addEventListener('click', () => {
+    showHomePage();
+  });
+
+  // Initially show the home page
+  showHomePage();
+</script>
+
+</body>
+</html>
